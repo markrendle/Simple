@@ -6,14 +6,14 @@ namespace Simple
 {
     public static class BufferedEnumerable
     {
-        public static IEnumerable<T> Create<T>(Func<Tuple<bool, T>> iterator)
+        public static IEnumerable<T> Create<T>(Func<Maybe<T>> iterator)
         {
             var enumerable = new BufferedEnumerable<T>();
             Task.Factory.StartNew(() => enumerable.Iterate(iterator));
             return enumerable;
         }
 
-        public static IEnumerable<T> Create<T>(Func<Tuple<bool, T>> iterator, Action cleanup)
+        public static IEnumerable<T> Create<T>(Func<Maybe<T>> iterator, Action cleanup)
         {
             var enumerable = new BufferedEnumerable<T>();
             var task = new Task(() => enumerable.Iterate(iterator));

@@ -12,13 +12,12 @@ namespace Simple
         private readonly List<T> _buffer = new List<T>();
         private bool _done;
 
-        internal void Iterate(Func<Tuple<bool, T>> iterator)
+        internal void Iterate(Func<Maybe<T>> iterator)
         {
-            var tuple = iterator();
-            while (tuple.Item1)
+            Maybe<T> maybe;
+            while (maybe = iterator())
             {
-                _buffer.Add(tuple.Item2);
-                tuple = iterator();
+                _buffer.Add(maybe.Value);
             }
             _done = true;
         }

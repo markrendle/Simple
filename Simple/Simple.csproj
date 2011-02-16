@@ -43,6 +43,7 @@
     <Compile Include="BufferedEnumerable.cs" />
     <Compile Include="BufferedEnumerable`1.cs" />
     <Compile Include="EnumerableEx.cs" />
+    <Compile Include="Maybe`1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
